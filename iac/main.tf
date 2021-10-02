@@ -19,12 +19,14 @@ module "lambda_function" {
 
   function_name = "poc-terraform"
   description   = "praticando criação de lambda com terraform"
-  handler       = "index.lambda_handler"
+  handler       = "lambda"
   runtime       = "go1.x"
 
   source_path = "../target/lambda"
 
-cloudwatch_logs_retention_in_days = 1
+  attach_cloudwatch_logs_policy     = false
+  cloudwatch_logs_retention_in_days = 1
+
   tags = {
     Name        = "poc-aws-lambda-terraform"
     Environment = "dev"
